@@ -1,7 +1,9 @@
+import Banner from "../components/Banner";
+
 const Home = () => {
   return (
     <div>
-      <h2>this is home page form clint page</h2>
+      <Banner></Banner>
     </div>
   );
 };

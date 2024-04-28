@@ -29,7 +29,7 @@ const Navbar = () => {
       .catch((error) => toast.error(error.message));
   }
   return (
-    <div className="bg-indigo-300 shadow-md">
+    <div className="bg-indigo-300 shadow-md ">
       <div className="navbar max-w-screen-xl mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -53,7 +53,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              className="menu menu-sm dropdown-content mt-3 z-[6] p-2 shadow bg-base-100 rounded-box w-52">
               <li>
                 <NavLink
                   to="/"
@@ -142,7 +142,8 @@ const Navbar = () => {
         <div className="navbar-center">
           <a className="btn btn-ghost text-xl md:text-3xl">
             <span className="text-secondary">Dream</span>
-            <span className="animate-bounce text-primary">/</span> Venture
+            <span className="animate-bounce">/</span>
+            <span className=" text-primary"> Venture</span>
           </a>
         </div>
         <div className="navbar-end">
@@ -171,7 +172,7 @@ const Navbar = () => {
                     </div>
                     <ul
                       tabIndex={0}
-                      className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                      className="menu menu-sm dropdown-content mt-3 z-[7] p-2 shadow bg-base-100 rounded-box w-52">
                       <li>
                         <a className="justify-between font-semibold">
                           Profile
@@ -208,60 +209,6 @@ const Navbar = () => {
               )}
             </div>
           )}
-          {/* <div>
-            {user ? (
-              <div className="flex items-center">
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn flex justify-center items-center btn-ghost btn-circle avatar  tooltip hover:tooltip-open tooltip-left"
-                    data-tip={user.displayName ? user.displayName : "userName"}>
-                    <div className="w-10 rounded-full">
-                      <img
-                        alt={user ? user.DisplayName : "User Name"}
-                        src={user ? user.photoURL : deafultPhoto}
-                      />
-                    </div>
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                      <a className="justify-between font-semibold">
-                        Profile
-                        <span className="badge">New</span>
-                      </a>
-                    </li>
-                    <li>
-                      <p>{user ? user.displayName : "Your Name"}</p>
-                    </li>
-                    <li>
-                      <p>{user ? user.email : "Your Email"}</p>
-                    </li>
-                  </ul>
-                </div>
-                <button
-                  onClick={handleLogOut}
-                  className="bg-secondary p-2 rounded-lg text-white font-semibold">
-                  Log Out
-                </button>
-              </div>
-            ) : (
-              <div>
-                <Link to="/login">
-                  <button className="bg-primary hover:bg-violet-600 p-2 rounded-lg text-white md:font-semibold">
-                    LogIn
-                  </button>
-                </Link>
-                <Link to="/register">
-                  <button className="bg-secondary hover:bg-purple-500 p-2 rounded-lg text-white md:font-semibold ml-3">
-                    Register
-                  </button>
-                </Link>
-              </div>
-            )}
-          </div> */}
 
           {/* Navbar end */}
         </div>
