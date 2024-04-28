@@ -8,6 +8,11 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import ContextElement from './contexts/ContextElement.jsx';
+import Register from './pages/Register.jsx';
+import AddTouristSpot from './pages/AddTouristSpot.jsx';
+import MyList from './pages/MyList.jsx';
+import AllTouristSpot from './pages/AllTouristSpot.jsx';
+import ProtectedRoute from './Protected/ProtectedRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -18,13 +23,37 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "/login",
-        element: <Login></Login>
-      }
-    ]
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/addtouristspot",
+        element: (
+          <ProtectedRoute>
+            <AddTouristSpot></AddTouristSpot>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/mylist",
+        element: (
+          <ProtectedRoute>
+            <MyList></MyList>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/alltouristspot",
+        element: <AllTouristSpot></AllTouristSpot>,
+      },
+    ],
   },
 ]);
 

@@ -4,46 +4,97 @@ import { FaEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { theme, logInWithEmailPass, logInWithGoogle, logInWithGithub } =
-    useContext(Mycontext);
+  const {
+    theme,
+    registerWithEmailPass,
+    updateUserProfile,
+    logInWithGoogle,
+    logInWithGithub,
+  } = useContext(Mycontext);
 
   const [toglePass, setTogglePass] = useState(true);
+
   const handleToggle = () => {
     setTogglePass(!toglePass);
   };
 
-  const handleLogIn = (e) => {
+  function validatePassword(password) {
+    return password.length >= 6;
+  }
+
+  const [successRegisterUser, setSuccessRegisterUser] = useState("");
+  const [registerError, setRegisterError] = useState("");
+
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.Email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
 
-    const data = { email, password };
-    console.log(data);
+    const data = { email, password, name, photo };
 
-    logInWithEmailPass(email, password)
+    if (!validatePassword(password)) {
+      setRegisterError("Please provide at least 6 digits password");
+      toast.error("Please provide at least 6 digits password");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setRegisterError("Please provide at least 1 uppercase latter");
+      toast.error("Please provide at least 1 uppercase latter");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setRegisterError("Please provide at least 1 lowercase latter");
+      toast.error("Please provide at least 1 lowercase latter");
+      return;
+    }
+    if (
+      validatePassword(password) &&
+      /[A-Z]/.test(password) &&
+      /[a-z]/.test(password)
+    ) {
+      setRegisterError("");
+    }
+
+    console.log(data, successRegisterUser);
+
+    registerWithEmailPass(email, password)
       .then(() => {
-        toast.success("SignIn successful", { theme: "colored" });
-        if (location.state) {
-          navigate(location.state);
-        } else {
-          navigate("/");
-        }
+        updateUserProfile(name, photo)
+          .then(() => {
+            setRegisterError("");
+            setSuccessRegisterUser("Registration successful");
+            toast.success(`Registration successful`);
+            if (location.state) {
+              navigate(location.state);
+            } else {
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            setSuccessRegisterUser("");
+            setRegisterError(error.message.split(":")[1]);
+            toast.error(error.message.split(":")[1]);
+          });
       })
-      .catch(() => {
-        toast.error("Please provide correct email / password", {
-          theme: "colored",
-        });
+      .catch((error) => {
+        setSuccessRegisterUser("");
+        setRegisterError(error.message.split(":")[1]);
+        toast.error(error.message.split(":")[1]);
       });
   };
 
   const handleGoogleLogin = () => {
     logInWithGoogle()
       .then(() => {
+        setRegisterError("");
+        setSuccessRegisterUser("Registration successful");
         toast.success(`Registration successful`);
         if (location.state) {
           navigate(location.state);
@@ -52,6 +103,8 @@ const Login = () => {
         }
       })
       .catch((error) => {
+        setSuccessRegisterUser("");
+        setRegisterError(error.message.split(":")[1]);
         toast.error(error.message.split(":")[1]);
       });
   };
@@ -59,6 +112,8 @@ const Login = () => {
   const handleGitHubLogIn = () => {
     logInWithGithub()
       .then(() => {
+        setRegisterError("");
+        setSuccessRegisterUser("Registration successful");
         toast.success(`Registration successful`);
         if (location.state) {
           navigate(location.state);
@@ -67,19 +122,40 @@ const Login = () => {
         }
       })
       .catch((error) => {
+        setSuccessRegisterUser("");
+        setRegisterError(error.message.split(":")[1]);
         toast.error(error.message.split(":")[1]);
       });
   };
 
+  console.log(registerError);
   return (
     <div
       className={`${
         theme === "light"
-          ? "w-[70%] md:w-1/2 my-8 p-8 space-y-3 rounded-xl bg-purple-300 mx-auto"
-          : "w-[70%] md:w-1/2 my-8 p-8 space-y-3 rounded-xl bg-purple-700 mx-auto"
+          ? "w-[70%] md:w-1/2 my-8 p-8 space-y-3 rounded-xl bg-indigo-300 mx-auto"
+          : "w-[70%] md:w-1/2 my-8 p-8 space-y-3 rounded-xl bg-indigo-700 mx-auto"
       }`}>
-      <h1 className="text-2xl font-bold text-center text-primary">Login</h1>
-      <form onSubmit={handleLogIn} className="space-y-6">
+      <h1 className="text-2xl font-bold text-center text-secondary">
+        Register
+      </h1>
+      <form onSubmit={handleRegister} className="space-y-6">
+        <div className="space-y-1 text-sm">
+          <label
+            htmlFor="name"
+            className={`${
+              theme === "light" ? "block text-gray-600" : "block text-gray-900"
+            }`}>
+            Name :
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            className="w-full px-4 py-3 rounded-md bg-gray-50 text-gray-800"
+          />
+        </div>
         <div className="space-y-1 text-sm">
           <label
             htmlFor="Email"
@@ -93,7 +169,23 @@ const Login = () => {
             name="Email"
             id="Email"
             placeholder="Email"
-            className="w-full px-4 py-3 rounded-md bg-gray-50 text-gray-800 focus:dark:border-violet-600"
+            className="w-full px-4 py-3 rounded-md bg-gray-50 text-gray-800"
+          />
+        </div>
+        <div className="space-y-1 text-sm">
+          <label
+            htmlFor="photo"
+            className={`${
+              theme === "light" ? "block text-gray-600" : "block text-gray-900"
+            }`}>
+            Photo Url :
+          </label>
+          <input
+            type="text"
+            name="photo"
+            id="photo"
+            placeholder="photo url"
+            className="w-full px-4 py-3 rounded-md bg-gray-50 text-gray-800"
           />
         </div>
         <div className="space-y-1 text-sm">
@@ -113,12 +205,22 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md bg-gray-50 text-gray-800"
             />
             <div className="absolute top-3 right-5">
-              <FaEye className="text-xl text-primary" onClick={handleToggle} />
+              <FaEye
+                className="text-xl text-secondary"
+                onClick={handleToggle}
+              />
             </div>
           </div>
         </div>
-        <button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-primary hover:bg-violet-700">
-          LogIn
+        <div>
+          {registerError ? (
+            <p className="text-red-500">{registerError}</p>
+          ) : (
+            <p></p>
+          )}
+        </div>
+        <button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-secondary hover:bg-fuchsia-500">
+          Register
         </button>
       </form>
       <div className="flex items-center pt-4 space-x-1">
@@ -132,7 +234,10 @@ const Login = () => {
         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button onClick={handleGoogleLogin} aria-label="Log in with Google" className="p-3 rounded-sm">
+        <button
+          onClick={handleGoogleLogin}
+          aria-label="Log in with Google"
+          className="p-3 rounded-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
@@ -141,7 +246,10 @@ const Login = () => {
           </svg>
         </button>
 
-        <button onClick={handleGitHubLogIn} aria-label="Log in with GitHub" className="p-3 rounded-sm">
+        <button
+          onClick={handleGitHubLogIn}
+          aria-label="Log in with GitHub"
+          className="p-3 rounded-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
@@ -156,13 +264,13 @@ const Login = () => {
             ? "block text-gray-600 text-xs text-center sm:px-6"
             : "block text-gray-900 text-xs text-center sm:px-6"
         }`}>
-        Don't have an account?
-        <Link to="/register" className="underline dark:text-gray-900 ml-1">
-          Sign up
+        Already have an account?
+        <Link to="/login" className="underline dark:text-gray-900 ml-1">
+          LogIn
         </Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;
