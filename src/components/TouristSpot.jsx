@@ -1,7 +1,18 @@
 import Marquee from "react-fast-marquee";
 import Card from "./Card";
+import { useEffect, useState } from "react";
 
 const TouristSpot = () => {
+  const [spots, setSpots]= useState([])
+  useEffect(()=>{
+    fetch("http://localhost:4000/spots")
+    .then(res =>res.json())
+    .then(data =>{
+      setSpots(data)
+    })
+  },[])
+
+  console.log(spots)
   return (
     <div>
       <h2 className="text-center text-3xl font-bold text-primary">
@@ -12,19 +23,15 @@ const TouristSpot = () => {
         leave you spellbound!
       </p>
       <div className="grid gap-4 md:grid-cols-2  lg:hidden">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+       {
+        spots.map(spot => <Card key={spot._id} spot={spot}></Card>)
+       }
       </div>
       <div className="hidden lg:block">
         <Marquee pauseOnHover={true}>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+      {
+        spots.map(spot => <Card key={spot._id} spot={spot}></Card>)
+      }
         </Marquee>
       </div>
     </div>
