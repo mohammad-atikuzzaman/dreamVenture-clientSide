@@ -2,10 +2,12 @@ import { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Mycontext } from "../contexts/ContextElement";
 import { toast } from "react-toastify";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  const { theme, setTheme, user, loading, deafultPhoto, logOut } = useContext(Mycontext);
-
+  const { theme, setTheme, user, loading, deafultPhoto, logOut } =
+    useContext(Mycontext);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -22,12 +24,11 @@ const Navbar = () => {
     }
   };
 
-
-  const handleLogOut =()=>{
+  const handleLogOut = () => {
     logOut()
       .then(() => toast.success("Signed Out"))
       .catch((error) => toast.error(error.message));
-  }
+  };
   return (
     <div className="bg-indigo-300 shadow-md ">
       <div className="navbar max-w-screen-xl mx-auto ">
@@ -156,13 +157,14 @@ const Navbar = () => {
               {user ? (
                 <div className="flex items-center">
                   <div className="dropdown dropdown-end">
+                    <Tooltip anchorSelect=".my-anchor-element" place="left">
+                      Hello world!
+                    </Tooltip>
+
                     <div
                       tabIndex={0}
                       role="button"
-                      className="btn flex justify-center items-center btn-ghost btn-circle avatar  tooltip hover:tooltip-open tooltip-left"
-                      data-tip={
-                        user.displayName ? user.displayName : "userName"
-                      }>
+                      className="my-anchor-element btn flex justify-center items-center btn-ghost btn-circle avatar ">
                       <div className="w-10 rounded-full">
                         <img
                           alt={user ? user.DisplayName : "User Name"}
