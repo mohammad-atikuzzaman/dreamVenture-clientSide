@@ -158,7 +158,9 @@ const Navbar = () => {
                 <div className="flex items-center">
                   <div className="dropdown dropdown-end">
                     <Tooltip anchorSelect=".my-anchor-element" place="left">
-                      Hello world!
+                      {
+                        user? user.displayName : "User Name"
+                      }
                     </Tooltip>
 
                     <div
