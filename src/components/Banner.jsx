@@ -10,10 +10,8 @@ const Banner = () => {
   return (
     <div>
       <div className=" bg-indigo-300 flex justify-center items-center mt-6 font-bold text-2xl p-4 rounded-lg">
-        <span className="text-primary">
-          Adventure awaits just around the corner.
-        </span>
-        <span className="text-secondary">{text}</span>
+          <p className="text-primary">Adventure awaits just around the corner.
+        <span className="text-secondary">{text}</span></p>
         <Cursor cursorColor="#FF00D3" />
       </div>
       <div className="carousel w-full">
