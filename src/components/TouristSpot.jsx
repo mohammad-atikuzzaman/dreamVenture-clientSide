@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const TouristSpot = () => {
   const [spots, setSpots] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/spots")
+    fetch("https://server-iota-inky.vercel.app/spots")
       .then((res) => res.json())
       .then((data) => {
         setSpots(data);
@@ -27,7 +27,7 @@ const TouristSpot = () => {
         Come for the sights, stay for the memories – our tourist spots will
         leave you spellbound!
       </p>
-      <div className="grid gap-4 md:grid-cols-2  lg:hidden">
+      <div className="grid gap-2 md:grid-cols-2  lg:hidden">
         {displaySpots.map((spot) => (
           <Card key={spot._id} spot={spot}></Card>
         ))}

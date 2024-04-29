@@ -14,7 +14,7 @@ const Card = ({ spot }) => {
     Cost
   } = spot;
   return (
-    <div className="p-4">
+    <div className="px-2 md:p-4">
       <div className=" w-full lg:max-w-96 m-4  mx-auto p-4 space-y-2 overflow-hidden rounded-lg shadow-md bg-indigo-300 text-secondary hover:scale-105 hover:bg-indigo-500 ">
         <div>
           <img src={Photo} alt="" />

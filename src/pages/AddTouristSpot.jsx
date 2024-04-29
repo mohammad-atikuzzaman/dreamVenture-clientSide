@@ -22,18 +22,18 @@ const AddTouristSpot = () => {
     const spot = {SpotName, Location, Photo, Description, Country, Cost, Season, Traveltime, Visitor, Email, UserName}
     console.log("spot",spot)
 
-    fetch("http://localhost:4000/addSpot",{
+    fetch("https://server-iota-inky.vercel.app/addSpot", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(spot)
+      body: JSON.stringify(spot),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      toast.success("Spot added Successfully")
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Spot added Successfully");
+      });
   };
 
   return (

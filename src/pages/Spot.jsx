@@ -2,7 +2,6 @@ import { useLoaderData } from "react-router-dom";
 
 const Spot = () => {
  const loaderData = useLoaderData()
-  console.log(loaderData)
   return (
     <div className="p-5 mx-auto sm:p-10 md:p-16 bg-primary rounded-lg my-8">
       <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">

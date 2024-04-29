@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import PropTypes from "prop-types"
 
 export const Mycontext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -80,5 +81,9 @@ const ContextElement = ({ children }) => {
   };
   return <Mycontext.Provider value={contexts}>{children}</Mycontext.Provider>;
 };
+
+ContextElement.propTypes ={
+  children: PropTypes.object
+}
 
 export default ContextElement;

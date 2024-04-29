@@ -2,12 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Mycontext } from "../contexts/ContextElement";
+import PropTypes from "prop-types"
 
 const Table = ({ data }) => {
-  const {loading, setLoading} = useContext(Mycontext)
+  const { setLoading } = useContext(Mycontext);
   const handleDelete = (id) => {
-    console.log("delete id fucn", id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -18,8 +17,8 @@ const Table = ({ data }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        setLoading(true)
-        fetch(`http://localhost:4000/spots/${id}`, {
+        setLoading(true);
+        fetch(`https://server-iota-inky.vercel.app/spots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -27,7 +26,7 @@ const Table = ({ data }) => {
             console.log(Ddata);
             console.log("delete success full", data);
             if (Ddata.deletedCount > 0) {
-              setLoading(false)
+              setLoading(false);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -67,5 +66,9 @@ const Table = ({ data }) => {
     </tr>
   );
 };
+
+Table.propTypes ={
+  data: PropTypes.object
+}
 
 export default Table;

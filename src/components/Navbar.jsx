@@ -158,9 +158,7 @@ const Navbar = () => {
                 <div className="flex items-center">
                   <div className="dropdown dropdown-end">
                     <Tooltip anchorSelect=".my-anchor-element" place="left">
-                      {
-                        user? user.displayName : "User Name"
-                      }
+                      {user ? user.displayName : "User Name"}
                     </Tooltip>
 
                     <div
@@ -188,6 +186,9 @@ const Navbar = () => {
                       </li>
                       <li>
                         <p>{user ? user.email : "Your Email"}</p>
+                      </li>
+                      <li className="">
+                        <button onClick={handleLogOut} className="btn btn-sm bg-secondary">LogOut</button>
                       </li>
                     </ul>
                   </div>

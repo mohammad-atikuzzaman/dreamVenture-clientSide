@@ -9,7 +9,7 @@ const FeedbackForm = () => {
     const message = form.message.value;
     const userData = { user, email, message };
     console.log(userData);
-    fetch("http://localhost:4000/feedback", {
+    fetch("https://server-iota-inky.vercel.app/feedback", {
       method: "POST",
       headers: {
         "content-type": "application/json",

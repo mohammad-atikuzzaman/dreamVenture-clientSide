@@ -62,7 +62,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/spots/${params.id}`),
+          fetch(`https://server-iota-inky.vercel.app/spots/${params.id}`),
       },
       {
         path: "/update/:id",

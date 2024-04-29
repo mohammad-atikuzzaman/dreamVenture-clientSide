@@ -4,7 +4,7 @@ import FeedBack from "./FeedBack";
 const Feedbacks = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/feedback")
+    fetch("https://server-iota-inky.vercel.app/feedback")
       .then((res) => res.json())
       .then((data) => {
         setFeedbacks(data);
