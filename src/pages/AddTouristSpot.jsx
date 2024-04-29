@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const AddTouristSpot = () => {
   const handleAddSpot = (e) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const AddTouristSpot = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      toast.success("Spot added Successfully")
     })
   };
 

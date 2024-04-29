@@ -3,16 +3,22 @@ import Card from "./Card";
 import { useEffect, useState } from "react";
 
 const TouristSpot = () => {
-  const [spots, setSpots]= useState([])
-  useEffect(()=>{
+  const [spots, setSpots] = useState([]);
+  useEffect(() => {
     fetch("http://localhost:4000/spots")
-    .then(res =>res.json())
-    .then(data =>{
-      setSpots(data)
-    })
-  },[])
+      .then((res) => res.json())
+      .then((data) => {
+        setSpots(data);
+      });
+  }, []);
 
-  console.log(spots)
+  const [displaySpots, setDisplaySpot] = useState([]);
+  useEffect(() => {
+    const sSpot = spots.slice(0, 6);
+    spots.length > 6 ? setDisplaySpot(sSpot) : setDisplaySpot(spots);
+  }, [spots]);
+  console.log("displaySpot", displaySpots);
+
   return (
     <div>
       <h2 className="text-center text-3xl font-bold text-primary">
@@ -23,15 +29,15 @@ const TouristSpot = () => {
         leave you spellbound!
       </p>
       <div className="grid gap-4 md:grid-cols-2  lg:hidden">
-       {
-        spots.map(spot => <Card key={spot._id} spot={spot}></Card>)
-       }
+        {displaySpots.map((spot) => (
+          <Card key={spot._id} spot={spot}></Card>
+        ))}
       </div>
       <div className="hidden lg:block">
         <Marquee pauseOnHover={true}>
-      {
-        spots.map(spot => <Card key={spot._id} spot={spot}></Card>)
-      }
+          {displaySpots.map((spot) => (
+            <Card key={spot._id} spot={spot}></Card>
+          ))}
         </Marquee>
       </div>
     </div>
