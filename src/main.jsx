@@ -1,20 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from './pages/ErrorPage.jsx';
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
-import ContextElement from './contexts/ContextElement.jsx';
-import Register from './pages/Register.jsx';
-import AddTouristSpot from './pages/AddTouristSpot.jsx';
-import MyList from './pages/MyList.jsx';
-import AllTouristSpot from './pages/AllTouristSpot.jsx';
-import ProtectedRoute from './Protected/ProtectedRoute.jsx';
-import Spot from './pages/Spot.jsx';
-
+import ErrorPage from "./pages/ErrorPage.jsx";
+import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
+import ContextElement from "./contexts/ContextElement.jsx";
+import Register from "./pages/Register.jsx";
+import AddTouristSpot from "./pages/AddTouristSpot.jsx";
+import MyList from "./pages/MyList.jsx";
+import AllTouristSpot from "./pages/AllTouristSpot.jsx";
+import ProtectedRoute from "./Protected/ProtectedRoute.jsx";
+import Spot from "./pages/Spot.jsx";
+import UpdateSpot from "./pages/UpdateSpot.jsx";
 
 const router = createBrowserRouter([
   {
@@ -56,13 +56,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/spot/:id",
-        element: <Spot></Spot>,
-        loader: ({params}) => fetch(`http://localhost:4000/spots/${params.id}`),
+        element: (
+          <ProtectedRoute>
+            <Spot></Spot>
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/spots/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <ProtectedRoute>
+            <UpdateSpot></UpdateSpot>
+          </ProtectedRoute>
+        ),
       },
     ],
   },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

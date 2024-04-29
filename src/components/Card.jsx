@@ -1,20 +1,14 @@
 import { FaRegCalendarTimes, FaStreetView } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { GiSolarTime } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Card = ({ spot }) => {
   const {
-    Email,
     _id,
-    Country,
-    Location,
     Photo,
     Season,
     SpotName,
-    UserName,
-    Description,
     Traveltime,
     Visitor,
     Cost

@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Mycontext } from "../contexts/ContextElement";
 
-const AddTouristSpot = () => {
-  const {user} = useContext(Mycontext)
-  const userEmail = user.email;
-  const handleAddSpot = (e) => {
+const UpdateSpot = () => {
+  const {id}= useParams()
+
+  const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const SpotName = form.touristspotname.value;
@@ -17,35 +16,44 @@ const AddTouristSpot = () => {
     const Season = form.season.value;
     const Traveltime = form.traveltime.value;
     const Visitor = form.visitor.value;
-    const Email = form.email.value;
-    const UserName = form.username.value;
-    const spot = {SpotName, Location, Photo, Description, Country, Cost, Season, Traveltime, Visitor, Email, UserName}
-    console.log("spot",spot)
+    const spot = {
+      SpotName,
+      Location,
+      Photo,
+      Description,
+      Country,
+      Cost,
+      Season,
+      Traveltime,
+      Visitor,
+    };
+    
 
-    fetch("http://localhost:4000/addSpot",{
-      method: "POST",
+    fetch(`http://localhost:4000/spots/${id}`, {
+      method: "PUT",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(spot)
+      body: JSON.stringify(spot),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      toast.success("Spot added Successfully")
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Spot Update Successfully");
+      });
   };
 
   return (
     <section className="p-6 text-primary">
       <form
-        onSubmit={handleAddSpot}
+        onSubmit={handleUpdate}
         className="container flex flex-col mx-auto space-y-12">
         <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm bg-indigo-300">
           <div className="space-y-2 col-span-full lg:col-span-1">
-            <h2 className="font-bold text-2xl">Add Tourist spots</h2>
+            <h2 className="font-bold text-2xl">Update Tourist spots</h2>
             <p className="text-xs font-semibold">
-              Here add a unique and decent place for travel, who brings happiness in mind
+              Here update information about place for travel, who brings
+              happiness in mind
             </p>
           </div>
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -132,7 +140,7 @@ const AddTouristSpot = () => {
               <label htmlFor="season" className="text-sm font-semibold">
                 Season
               </label>
-   
+
               <select
                 name="season"
                 id="season"
@@ -180,43 +188,17 @@ const AddTouristSpot = () => {
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 text-secondary focus:ring-violet-400 border-gray-700"
               />
             </div>
-
-            <div className="col-span-full ">
-              <label htmlFor="email" className="text-sm font-semibold">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                defaultValue={userEmail}
-                placeholder="Email"
-                className="w-full rounded-md focus:ring focus:ring-opacity-75 text-secondary focus:ring-violet-400 border-gray-700"
-              />
-            </div>
-            <div className="col-span-full">
-              <label htmlFor="username" className="text-sm font-semibold">
-                User Name
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="User Name"
-                className="w-full rounded-md focus:ring focus:ring-opacity-75 text-secondary focus:ring-violet-400 border-gray-700"
-              />
-            </div>
           </div>
         </fieldset>
 
         <input
           className="bg-secondary w-full p-2 rounded-lg font-semibold"
           type="submit"
-          value="Add"
+          value="Update"
         />
       </form>
     </section>
   );
 };
 
-export default AddTouristSpot;
+export default UpdateSpot;

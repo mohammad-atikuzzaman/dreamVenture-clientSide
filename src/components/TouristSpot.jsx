@@ -17,7 +17,6 @@ const TouristSpot = () => {
     const sSpot = spots.slice(0, 6);
     spots.length > 6 ? setDisplaySpot(sSpot) : setDisplaySpot(spots);
   }, [spots]);
-  console.log("displaySpot", displaySpots);
 
   return (
     <div>
