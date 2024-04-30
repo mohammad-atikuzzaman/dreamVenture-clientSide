@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import { Mycontext } from "../contexts/ContextElement";
+import Swal from "sweetalert2";
 
 const AddTouristSpot = () => {
   const {user} = useContext(Mycontext)
   const userEmail = user.email;
-  const myUserName = user.displayName
+  const myUserName = user.displayName;
 
   const handleAddSpot = (e) => {
     e.preventDefault();
@@ -34,7 +35,13 @@ const AddTouristSpot = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        toast.success("Spot added Successfully");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
@@ -205,7 +212,7 @@ const AddTouristSpot = () => {
                 name="username"
                 type="text"
                 placeholder="User Name"
-                defaultValue={myUserName}
+                defaultValue={myUserName? myUserName: "User Name"}
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 text-secondary focus:ring-violet-400 border-gray-700"
               />
             </div>
