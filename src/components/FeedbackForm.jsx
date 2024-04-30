@@ -12,7 +12,7 @@ const FeedbackForm = () => {
     const message = form.message.value;
     const userData = { user, email, message };
     setLoading(true);
-    fetch("https://dreamventure.vercel.app//feedback", {
+    fetch("https://dreamventure.vercel.app/feedback", {
       method: "POST",
       headers: {
         "content-type": "application/json",
