@@ -31,7 +31,7 @@ const Spot = () => {
           </div>
           <div className="text-white font-bold flex justify-between">
             <p className="text-primary border-2 border-primary p-1 rounded-md">
-              Cost : {loaderData.Cost}
+              Cost : {loaderData.Cost} USD
             </p>
             <p className="text-primary border-2 border-primary p-1 rounded-md">
               TravelTime : {loaderData.Traveltime}

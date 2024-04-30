@@ -22,7 +22,7 @@ const Card = ({ spot }) => {
         </div>
         <div>
           <div className="bg-purple-500 p-1 flex items-center gap-2 rounded-md text-white">
-            Average Cost : <span>{Cost}</span>
+            Average Cost : <span>{Cost} USD</span>
           </div>
         </div>
         <div className=" space-y-2">

@@ -5,6 +5,8 @@ import { Mycontext } from "../contexts/ContextElement";
 const AddTouristSpot = () => {
   const {user} = useContext(Mycontext)
   const userEmail = user.email;
+  const myUserName = user.displayName
+
   const handleAddSpot = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -203,6 +205,7 @@ const AddTouristSpot = () => {
                 name="username"
                 type="text"
                 placeholder="User Name"
+                defaultValue={myUserName}
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 text-secondary focus:ring-violet-400 border-gray-700"
               />
             </div>
