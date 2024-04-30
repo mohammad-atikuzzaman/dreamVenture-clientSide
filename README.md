@@ -1,8 +1,25 @@
-# React + Vite
+# Dream Venture
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+live link of site https://dream-ventures.web.app/
+[Dream venture](https://dream-ventures.web.app/ 'Dream Venture')
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Category => Southeast Asia
+
+In this project I use following packages
+
+* React Tooltip
+* React typewriter
+
+Also in this project I have used
+
+* react router
+* tailwind css
+* daisy ui
+* react icons
+* react tostify
+* sweetalert2
+* react fast marque
+* proptypes
+
+

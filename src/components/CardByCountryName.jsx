@@ -1,4 +1,3 @@
-import { FaRegCalendarTimes, FaStreetView } from "react-icons/fa";
 import { GiSolarTime } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
