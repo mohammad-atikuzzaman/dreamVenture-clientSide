@@ -10,7 +10,7 @@ const PageByCountry = () => {
 
   const [loaderData, setLoaderData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/myCountries/${country}`)
+    fetch(`https://dreamventure.vercel.app/myCountries/${country}`)
       .then((res) => res.json())
       .then((data) => {
         setLoaderData(data);
