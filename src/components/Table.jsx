@@ -18,7 +18,7 @@ const Table = ({ data }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        fetch(`https://server-iota-inky.vercel.app/spots/${id}`, {
+        fetch(`https://dreamventure.vercel.app/spots/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -22,7 +22,7 @@ const AddTouristSpot = () => {
     const spot = {SpotName, Location, Photo, Description, Country, Cost, Season, Traveltime, Visitor, Email, UserName}
     console.log("spot",spot)
 
-    fetch("https://server-iota-inky.vercel.app/addSpot", {
+    fetch("https://dreamventure.vercel.app/addSpot", {
       method: "POST",
       headers: {
         "content-type": "application/json",

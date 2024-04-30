@@ -1,7 +1,16 @@
+import { useEffect, useState } from "react";
 import Country from "./Country";
 import Marquee from "react-fast-marquee";
 
 const Countrys = () => {
+  const [countrys, setCountrys] = useState([]);
+  useEffect(() => {
+    fetch("https://dreamventure.vercel.app/countries")
+      .then((res) => res.json())
+      .then((data) => {
+        setCountrys(data);
+      });
+  }, []);
   return (
     <div>
       <h2 className="text-3xl text-primary text-center font-bold">
@@ -12,19 +21,15 @@ const Countrys = () => {
         explore the globe one country at a time!
       </p>
       <div className="grid md:grid-cols-2 gap-4 lg:hidden">
-        <Country></Country>
-        <Country></Country>
-        <Country></Country>
-        <Country></Country>
-        <Country></Country>
+        {countrys.map((country) => (
+          <Country key={country._id} cun={country}></Country>
+        ))}
       </div>
       <div className="hidden lg:block">
         <Marquee pauseOnHover={true} direction="right">
-          <Country></Country>
-          <Country></Country>
-          <Country></Country>
-          <Country></Country>
-          <Country></Country>
+          {countrys.map((country) => (
+            <Country key={country._id} cun={country}></Country>
+          ))}
         </Marquee>
       </div>
     </div>

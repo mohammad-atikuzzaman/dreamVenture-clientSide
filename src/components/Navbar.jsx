@@ -141,7 +141,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl md:text-3xl">
+          <a href="/" className="btn btn-ghost text-xl md:text-3xl">
             <span className="text-secondary">Dream</span>
             <span className="animate-bounce">/</span>
             <span className=" text-primary"> Venture</span>

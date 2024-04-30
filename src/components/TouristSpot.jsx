@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const TouristSpot = () => {
   const [spots, setSpots] = useState([]);
   useEffect(() => {
-    fetch("https://server-iota-inky.vercel.app/spots")
+    fetch("https://dreamventure.vercel.app/spots")
       .then((res) => res.json())
       .then((data) => {
         setSpots(data);

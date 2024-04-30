@@ -29,7 +29,7 @@ const UpdateSpot = () => {
     };
     
 
-    fetch(`https://server-iota-inky.vercel.app/spots/${id}`, {
+    fetch(`https://dreamventure.vercel.app/spots/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

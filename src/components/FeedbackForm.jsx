@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { Mycontext } from "../contexts/ContextElement";
 
 const FeedbackForm = () => {
+  const { setLoading } = useContext(Mycontext);
   const handleFeedBack = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -8,8 +11,8 @@ const FeedbackForm = () => {
     const email = form.email.value;
     const message = form.message.value;
     const userData = { user, email, message };
-    console.log(userData);
-    fetch("https://server-iota-inky.vercel.app/feedback", {
+    setLoading(true);
+    fetch("https://dreamventure.vercel.app//feedback", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -19,6 +22,7 @@ const FeedbackForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setLoading(false);
         toast.success("Feedback sent successful");
         form.reset();
       });

@@ -7,7 +7,7 @@ const MyList = () => {
   const [loadedData, setLoadedData] = useState([]);
 
   useEffect(() => {
-    fetch(`https://server-iota-inky.vercel.app/mySpots/${user.email}`)
+    fetch(`https://dreamventure.vercel.app/mySpots/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setLoadedData(data);

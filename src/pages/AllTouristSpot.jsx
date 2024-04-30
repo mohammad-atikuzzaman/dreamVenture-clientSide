@@ -5,7 +5,7 @@ const AllTouristSpot = () => {
   const [spots, setSpots] = useState([]);
   const [displaySpot, setDisplaySpot] = useState([]);
   useEffect(() => {
-    fetch("https://server-iota-inky.vercel.app/spots")
+    fetch("https://dreamventure.vercel.app/spots")
       .then((res) => res.json())
       .then((data) => {
         setSpots(data);

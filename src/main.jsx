@@ -15,6 +15,7 @@ import AllTouristSpot from "./pages/AllTouristSpot.jsx";
 import ProtectedRoute from "./Protected/ProtectedRoute.jsx";
 import Spot from "./pages/Spot.jsx";
 import UpdateSpot from "./pages/UpdateSpot.jsx";
+import PageByCountry from "./pages/PageByCountry.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://server-iota-inky.vercel.app/spots/${params.id}`),
+          fetch(`https://dreamventure.vercel.app/spots/${params.id}`),
       },
       {
         path: "/update/:id",
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "pagebycountry/:country",
+        element: <PageByCountry></PageByCountry>
+      }
     ],
   },
 ]);
