@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const UpdateSpot = () => {
-  const {id}= useParams()
+  const { id } = useParams();
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -27,7 +28,6 @@ const UpdateSpot = () => {
       Traveltime,
       Visitor,
     };
-    
 
     fetch(`https://dreamventure.vercel.app/spots/${id}`, {
       method: "PUT",
@@ -39,7 +39,13 @@ const UpdateSpot = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        toast.success("Spot Update Successfully");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
