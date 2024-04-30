@@ -6,7 +6,7 @@ const Footer = () => {
           <p className="font-bold text-secondary text-xl">Dream Venture</p>
           <p> Providing reliable tech since 2000</p>
           <p>Copyright © 2024 - All right reserved</p>
-          <a href="mailto: akash203037@gmail.com">Send mail to akash203037@gmail.com</a>
+          <a href="mailto: akash203037@gmail.com">Contact us : akash203037@gmail.com</a>
         </aside>
         <nav>
           <div className="grid grid-flow-col gap-4">
