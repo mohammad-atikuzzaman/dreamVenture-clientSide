@@ -1,6 +1,7 @@
 # Dream Venture
 
-live link of site https://dream-ventures.web.app/
+live link of site copy this link  https://dream-ventures.web.app/
+or click on
 [Dream venture](https://dream-ventures.web.app/ 'Dream Venture')
 
 
@@ -21,5 +22,15 @@ Also in this project I have used
 * sweetalert2
 * react fast marque
 * proptypes
+* firebase
+
+## I have added firebase for authentication
+I have added email/password, google and github based authentication
+
+## I used Exprese server in backend
+## I used mongodb for database
+We can call our data using specific id, email, country name
+Also we can call our all data.
+
 
 
