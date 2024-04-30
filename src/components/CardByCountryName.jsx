@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const CardByCountryName = ({spot}) => {
-  const { _id, Country, Season, SpotName, Traveltime, Visitor, Cost } = spot;
+  const { _id, Country, Season, SpotName, Location, Description, Cost } = spot;
   return (
     <div className="px-2 md:p-4">
       <div className=" w-full lg:max-w-96 m-4  mx-auto p-4 space-y-2 overflow-hidden rounded-lg shadow-md bg-indigo-300 text-secondary hover:scale-105 hover:bg-indigo-500 ">
@@ -20,18 +20,10 @@ const CardByCountryName = ({spot}) => {
         <div className=" space-y-2">
           <div className="space-y-2">
             <div className="text-purple-secondary border-2 border-purple-secondary p-1 flex justify-between items-center gap-2 rounded-md ">
-              <div className="flex items-center gap-2">
-                <p>Travel Time</p>
-                <FaRegCalendarTimes />
-              </div>{" "}
-              : <p>{Traveltime}</p>
+             Location : {Location}
             </div>
             <div className="text-purple-secondary border-2 border-purple-secondary p-1 flex justify-between items-center gap-2 rounded-md ">
-              <div className="flex items-center gap-2">
-                <p>Total visitor per year</p>
-                <FaStreetView />
-              </div>
-              :<p> {Visitor}</p>
+              {Description}
             </div>
           </div>
           <div className=" space-x-2 font-bold ">
