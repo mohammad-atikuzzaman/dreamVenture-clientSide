@@ -31,6 +31,6 @@ I have added email/password, google and github based authentication
 ## I used mongodb for database
 We can call our data using specific id, email, country name
 Also we can call our all data.
-#### In this project  we can register user, login user, post data, get data, update data and delete data
+### In this project  we can register user, login user, post data, get data, update data and delete data
 
 
