@@ -1,19 +1,11 @@
 # Dream Venture
 
-live link of site copy this link  https://dream-ventures.web.app/
-or click on
-[Dream venture](https://dream-ventures.web.app/ 'Dream Venture')
+### live link
+https://dream-ventures.web.app/
 
-
-### Category => Southeast Asia
-
-In this project I use following packages
-
+In this project I use 
 * React Tooltip
 * React typewriter
-
-Also in this project I have used
-
 * react router
 * tailwind css
 * daisy ui
@@ -24,13 +16,12 @@ Also in this project I have used
 * proptypes
 * firebase
 
-## I have added firebase for authentication
-I have added email/password, google and github based authentication
+## Features
+- User Authentication system using firebase
+- Only authorized user can see and add tourist place information
+- Post author's can update or delete their post
+- There are sorting system on all tourist sopt page
 
-## I used Exprese server in backend
-## I used mongodb for database
-We can call our data using specific id, email, country name
-Also we can call our all data.
-### In this project  we can register user, login user, post data, get data, update data and delete data
+### If any on want to clone this porject
 
-
+At first clone this porject, then run a command "npm i", manage a firebase key for authentication, then run the project.
