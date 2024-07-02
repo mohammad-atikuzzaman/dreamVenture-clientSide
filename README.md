@@ -25,4 +25,4 @@ In this project I use
 
 ### If any on want to clone this porject
 
-At first clone this porject, then run a command "npm i", manage a firebase key for authentication, then run the project.
+At first clone this project, then run a command "npm i", manage a firebase key for authentication, then run the project.
