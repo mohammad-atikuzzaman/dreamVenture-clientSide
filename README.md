@@ -1,4 +1,5 @@
 # Dream Venture
+The tourist spot information sharing platform. User Can find new tourist spot in various courtiers. Authorized user can see and add tourist spot on this platform
 
 ### live link
 https://dream-ventures.web.app/
